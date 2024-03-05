@@ -16,16 +16,16 @@
 <form action="login" method="post">
     <div>
         <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="username" required>
     </div>
     <div>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password" required>
     </div>
     <button type="submit">Iniciar Sesión</button>
 </form>
 <p>¿Aún no tienes una cuenta? <a href="register">Regístrate</a></p>
-<p>¿Prefieres continuar sin iniciar sesión? <a href="noLog">Haz clic aquí</a>.</p>
+<p>¿Prefieres continuar sin iniciar sesión? <a href="nolog">Haz clic aquí</a>.</p>
 
 
 </body></html>

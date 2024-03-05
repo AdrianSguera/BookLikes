@@ -9,8 +9,8 @@
 <h1>Bienvenido a la página de inicio</h1>
 <p>Por favor, elige una opción:</p>
 <ul>
-    <li><a href="login.jsp">Iniciar Sesión</a></li>
-    <li><a href="register.jsp">Registrarse</a></li>
+    <li><a href="login">Iniciar Sesión</a></li>
+    <li><a href="register">Registrarse</a></li>
 </ul>
 
 </body></html>
