@@ -1,13 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de inicio</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>
+<h1>Bienvenido a la página de inicio</h1>
+<p>Por favor, elige una opción:</p>
+<ul>
+    <li><a href="login.jsp">Iniciar Sesión</a></li>
+    <li><a href="register.jsp">Registrarse</a></li>
+</ul>
+
+</body></html>
