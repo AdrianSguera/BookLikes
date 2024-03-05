@@ -21,11 +21,11 @@ public class AppController {
     public List<Libro> getLibrosByUser(Usuario usuario) {
         return new Libro().getByUser(usuario);
     }
-    public int countLibrosByUser(int idUser){
-        return new Favorito().getFavoritoByUser(idUser).size();
+    public int countLibrosByUser(Usuario usuario){
+        return new Favorito().getFavoritoByUser(usuario).size();
     }
-    public List<Libro> getLibrosUserLike(int idUsuario){
-        return new Libro().getByUserLike(idUsuario);
+    public List<Libro> getLibrosUserLike(Usuario usuario){
+        return new Libro().getByUserLike(usuario);
     }
     public boolean isLoged(String usu, String pass) {
         return Usuario.login(usu, pass);

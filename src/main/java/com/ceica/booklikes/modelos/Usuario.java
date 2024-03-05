@@ -1,6 +1,7 @@
 package com.ceica.booklikes.modelos;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +9,7 @@ import java.util.Optional;
 public class Usuario extends ModeloBase {
     private int id;
     private String username, password;
-    private LocalDate fechaAlta;
+    private LocalDateTime fechaAlta;
 
     public Usuario() {
     }
@@ -42,11 +43,11 @@ public class Usuario extends ModeloBase {
         this.password = password;
     }
 
-    public LocalDate getFechaAlta() {
+    public LocalDateTime getFechaAlta() {
         return fechaAlta;
     }
 
-    public void setFechaAlta(LocalDate fechaAlta) {
+    public void setFechaAlta(LocalDateTime fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
 
@@ -59,6 +60,7 @@ public class Usuario extends ModeloBase {
             user.setId((int) objects[0]);
             user.setUsername((String) objects[1]);
             user.setPassword((String) objects[2]);
+            user.setFechaAlta((LocalDateTime) objects[3]);
             userList.add(user);
         }
         return userList;

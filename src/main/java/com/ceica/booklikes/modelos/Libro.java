@@ -1,6 +1,7 @@
 package com.ceica.booklikes.modelos;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,7 +9,7 @@ import java.util.stream.Collectors;
 public class Libro extends ModeloBase{
     private int id, idUsusario;
     private String titulo, descripcion, autor;
-    private LocalDate fechaCreacion;
+    private LocalDateTime fechaCreacion;
 
     public Libro() {
     }
@@ -59,11 +60,11 @@ public class Libro extends ModeloBase{
         this.autor = autor;
     }
 
-    public LocalDate getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -91,12 +92,12 @@ public class Libro extends ModeloBase{
                 .collect(Collectors.toList());
     }
 
-    public List<Libro> getByUserLike(int idUsusario) {
+    public List<Libro> getByUserLike(Usuario usuario) {
         List<Libro> libroList = new ArrayList<>();
         List<Object> objectList = new Libro().leerTodos("select libros.idLibros, libros.titulo, libros.autor, libros.descripcion, libros.FechaCreacion, libros.idUsuarios from favoritos\n" +
                 "inner join libros on favoritos.idLibros = libros.idLibros\n" +
                 "inner join usuarios on usuarios.idUsuarios = favoritos.idUsuarios\n" +
-                "where favoritos.idUsuarios =" + idUsusario);
+                "where favoritos.idUsuarios =" + usuario.getId());
         return getLibros(libroList, objectList);
     }
 
@@ -108,7 +109,7 @@ public class Libro extends ModeloBase{
             libro.setTitulo((String) objects[1]);
             libro.setAutor((String) objects[2]);
             libro.setDescripcion((String) objects[3]);
-            libro.setFechaCreacion((LocalDate) objects[4]);
+            libro.setFechaCreacion((LocalDateTime) objects[4]);
             libro.setIdUsusario((int) objects[5]);
             libroList.add(libro);
         }

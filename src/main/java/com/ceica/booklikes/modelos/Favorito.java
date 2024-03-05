@@ -1,13 +1,14 @@
 package com.ceica.booklikes.modelos;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Favorito extends ModeloBase{
     private int id, idUsusario, idLibro;
-    private LocalDate fechaFavorito;
+    private LocalDateTime fechaFavorito;
 
     public Favorito() {
     }
@@ -36,11 +37,11 @@ public class Favorito extends ModeloBase{
         this.idLibro = idLibro;
     }
 
-    public LocalDate getFechaFavorito() {
+    public LocalDateTime getFechaFavorito() {
         return fechaFavorito;
     }
 
-    public void setFechaFavorito(LocalDate fechaFavorito) {
+    public void setFechaFavorito(LocalDateTime fechaFavorito) {
         this.fechaFavorito = fechaFavorito;
     }
 
@@ -53,7 +54,7 @@ public class Favorito extends ModeloBase{
             favorito.setId((int) objects[0]);
             favorito.setIdUsusario((int) objects[1]);
             favorito.setIdLibro((int) objects[2]);
-            favorito.setFechaFavorito((LocalDate) objects[3]);
+            favorito.setFechaFavorito((LocalDateTime) objects[3]);
             favoritoList.add(favorito);
         }
         return favoritoList;
@@ -69,10 +70,10 @@ public class Favorito extends ModeloBase{
                 '}';
     }
 
-    public List<Favorito> getFavoritoByUser(int idUser) {
+    public List<Favorito> getFavoritoByUser(Usuario usuario) {
         List<Favorito> favoritoList = Favorito.getFavoritosBD();
         return favoritoList.stream()
-                .filter(favorito -> favorito.getIdUsusario() == idUser)
+                .filter(favorito -> favorito.getIdUsusario() == usuario.getId())
                 .collect(Collectors.toList());
     }
 
