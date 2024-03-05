@@ -2,6 +2,7 @@ package com.ceica.booklikes;
 
 import java.io.*;
 
+import com.ceica.booklikes.Controller.AppController;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -15,11 +16,12 @@ public class HelloServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
+        AppController appController = new AppController();
 
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
+        out.println("<h1>" + appController.getLibroByTitulo("titulo3") + "</h1>");
         out.println("</body></html>");
     }
 
