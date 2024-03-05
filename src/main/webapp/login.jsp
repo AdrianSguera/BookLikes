@@ -26,6 +26,6 @@
 </form>
 <p>¿Aún no tienes una cuenta? <a href="register">Regístrate</a></p>
 <p>¿Prefieres continuar sin iniciar sesión? <a href="nolog">Haz clic aquí</a>.</p>
-
+<p id ="menssage">${menssage}</p>
 
 </body></html>

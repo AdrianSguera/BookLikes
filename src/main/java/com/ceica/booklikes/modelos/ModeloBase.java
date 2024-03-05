@@ -62,6 +62,7 @@ public abstract class ModeloBase {
             return objectList;
         } catch (SQLException e) {
             return objectList;
+
         }
     }
 

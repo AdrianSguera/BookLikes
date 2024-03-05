@@ -26,11 +26,11 @@ public class LoginServlet extends HttpServlet {
         if (controller.isLoged(user,password)){
             response.sendRedirect("loged");
         } else {
-            request.setAttribute("mensaje", "Usuario o Contraseña incorrectos");
+            request.setAttribute("message", "Usuario o Contraseña incorrectos");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }catch (Exception e){
-        request.setAttribute("mensaje", "Usuario o Contraseña incorrectos");
+        request.setAttribute("message", "Usuario o Contraseña incorrectos");
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
     }
