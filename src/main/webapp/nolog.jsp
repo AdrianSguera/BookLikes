@@ -1,5 +1,6 @@
 <%@ page import="com.ceica.booklikes.modelos.Libro" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.ceica.booklikes.modelos.LibroFav" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 05/03/2024
@@ -14,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Libros</title>
 </head>
-<script src="nolog.js"></script>
 <body>
 <h1>Lista de Libros</h1>
 
@@ -31,17 +31,17 @@
     <tbody>
     <%
         // Obtener la lista de libros desde el atributo del request
-        List<Libro> libros = (List<Libro>) request.getAttribute("libros");
+        List<LibroFav> libros = (List<LibroFav>) request.getAttribute("libros");
 
         if (libros !=null){
-        for (Libro libro : libros) {
+        for (LibroFav libro : libros) {
     %>
     <tr>
         <td><%= libro.getId() %></td>
         <td><%= libro.getTitulo() %></td>
         <td><%= libro.getDescripcion() %></td>
         <td><%= libro.getAutor() %></td>
-        <td><input type="button" onclick="newfavorito(<%=libro.getId()+"&"+libro.getIdUsusario()%>)">Like</input></td>
+        <td><%= libro.getFavoritos()%></td>
     </tr>
     <%
         }

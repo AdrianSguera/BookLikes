@@ -1,5 +1,10 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.ceica.booklikes.modelos.ModeloBase" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
+<%
+    Connection con= ModeloBase.getConnection();
+%>
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

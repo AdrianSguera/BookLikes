@@ -2,6 +2,8 @@ package Servlets;
 
 import com.ceica.booklikes.Controller.AppController;
 import com.ceica.booklikes.modelos.Libro;
+import com.ceica.booklikes.modelos.LibroFav;
+import com.ceica.booklikes.modelos.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +17,7 @@ import java.util.List;
 public class NologServlet extends HttpServlet {
 AppController controller = new AppController();
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<Libro> libros = controller.getLibrosBD();
+        List<LibroFav> libros = controller.getFavoritosByLibro();
         request.setAttribute("libros",libros);
         request.getRequestDispatcher("nolog.jsp").forward(request, response);
 

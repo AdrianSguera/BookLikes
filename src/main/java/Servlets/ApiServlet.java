@@ -12,6 +12,9 @@ import java.io.IOException;
 @WebServlet (name = "ApiServlet",value = "/api")
 public class ApiServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException{
+
+    }
+    public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException{
         int idlibro = Integer.parseInt(request.getParameter("idlibro"));
         int idusuario = Integer.parseInt(request.getParameter("idusuario"));
         Usuario user = (Usuario) request.getSession().getAttribute("user");
@@ -22,8 +25,5 @@ public class ApiServlet extends HttpServlet {
             AppController controller = new AppController();
             controller.newFavorito(idlibro,idusuario);
         }
-    }
-    public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException{
-
     }
 }

@@ -1,9 +1,6 @@
 package com.ceica.booklikes.Controller;
 
-import com.ceica.booklikes.modelos.Favorito;
-import com.ceica.booklikes.modelos.Libro;
-import com.ceica.booklikes.modelos.ModeloBase;
-import com.ceica.booklikes.modelos.Usuario;
+import com.ceica.booklikes.modelos.*;
 
 import java.util.List;
 
@@ -65,5 +62,8 @@ public class AppController {
     }
     public boolean newFavorito(int idUser, int idLibro){
         return new Favorito().insertar("(idUsuarios,idLibros) values (?,?)", idUser, idLibro);
+    }
+    public List<LibroFav> getFavoritosByLibro(){
+        return new LibroFav().getFavoritosByLibro();
     }
 }

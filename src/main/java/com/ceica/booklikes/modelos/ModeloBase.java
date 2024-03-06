@@ -29,6 +29,15 @@ public abstract class ModeloBase {
         }
     }
 
+    public static Connection getConnection() {
+        try {
+            Connection connection = DriverManager.getConnection(URL, USUARIO, PASSWORD);
+            return connection;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     protected abstract String getNombreTabla();
 
     public boolean insertar(String consulta, Object... parametros) {
