@@ -21,10 +21,15 @@ window.onload = () => {
      */
 // scripts.js
 function cambiarTabla() {
-    var tablaLibros = document.getElementById('tablaLibros');
-    var librosFav =  document.getAttribute("librosfav") ;
-    if (librosFav) {
-        tablaLibros.innerHTML = librosFav;
+    const tablaLibros = document.getElementById('tablaLibros');
+    const tablaLibrosFav = document.getElementById('tablaLibrosFav');
+
+    if (tablaLibrosFav.style.display !== 'none') {
+        tablaLibrosFav.style.display = 'none';
+        tablaLibros.style.display = 'table';
+    } else {
+        tablaLibros.style.display = 'none';
+        tablaLibrosFav.style.display = 'table';
     }
 }
 

@@ -20,8 +20,8 @@ public class LogedServlet extends HttpServlet {
         Usuario user = (Usuario) request.getSession().getAttribute("user");
         List<LibroFav> libros = controller.getFavoritosByLibro();
         request.setAttribute("libros",libros);
-        List<Libro> libroFavs = controller.getLibrosUserLike(user);
-        request.setAttribute("librosfav",libroFavs);
+        List<Libro> favLibrosByUser = controller.getLibrosUserLike(user);
+        request.setAttribute("favLibrosByUser",favLibrosByUser);
         request.getRequestDispatcher("loged.jsp").forward(request,response);
     }
 
