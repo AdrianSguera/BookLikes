@@ -5,7 +5,16 @@ import com.ceica.booklikes.modelos.*;
 import java.util.List;
 
 public class AppController {
+    private Usuario usuariologeado;
     public AppController() {
+    }
+
+    public Usuario getUsuarioLogeado() {
+        return usuariologeado;
+    }
+
+    public void setUsuarioLogeado(Usuario usuario) {
+        this.usuariologeado = usuario;
     }
 
     public List<Usuario> getUsuariosBD() {
@@ -26,7 +35,8 @@ public class AppController {
         return new Libro().getByUserLike(usuario);
     }
     public boolean isLoged(String usu, String pass) {
-        return Usuario.login(usu, pass);
+        this.usuariologeado = Usuario.login(usu, pass);
+        return this.usuariologeado!=null;
     }
     public Libro getLibroByTitulo(String titulo){
         return new Libro().getLibroByTitulo(titulo).get(0);

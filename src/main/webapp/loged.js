@@ -20,7 +20,27 @@ window.onload = () => {
 
      */
 // scripts.js
+function cambiarTabla() {
+    var tablaLibros = document.getElementById('tablaLibros');
+    var librosFav =  document.getAttribute("librosfav") ;
+    if (librosFav) {
+        tablaLibros.innerHTML = librosFav;
+    }
+}
 
+function buscarLibro() {
+    var inputBusqueda = document.getElementById('inputBusqueda').value.toLowerCase();
+    var rows = document.querySelectorAll('#tablaLibros tbody tr');
+
+    rows.forEach(function(row) {
+        var titulo = row.cells[1].innerText.toLowerCase();
+        if (titulo.includes(inputBusqueda)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
     function newfavorito(idlibro, idusuario) {
         $.ajax({
             type: "POST",

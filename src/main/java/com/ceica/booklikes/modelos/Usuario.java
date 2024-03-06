@@ -81,12 +81,12 @@ public class Usuario extends ModeloBase {
         return "usuarios";
     }
 
-    public static boolean login(String usu, String pass) {
+    public static Usuario login(String usu, String pass) {
         List<Usuario> userList = Usuario.getUsuariosBD();
         Optional<Usuario> userOptional = userList.stream()
                 .filter(user -> usu.equals(user.getUsername()) && pass.equals(user.getPassword()))
                 .findFirst();
-        return userOptional.isPresent();
+        return userOptional.orElse(null);
     }
 }
 

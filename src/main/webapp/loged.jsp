@@ -20,7 +20,7 @@
 
 <!-- Contenido de tu página -->
 
-<table>
+<table id="tablaLibros">
     <thead>
     <tr>
         <th>ID Libro</th>
@@ -51,6 +51,16 @@
     %>
     </tbody>
 </table>
+
+<button onclick="cambiarTabla()">Mostrar Libros Favoritos</button>
+
+<!-- Buscador de libros -->
+<input type="text" id="inputBusqueda" placeholder="Buscar libro...">
+<button onclick="buscarLibro()">Buscar</button>
+
+<!-- Botón para redirigir a la página "crud" -->
+<a href="edit" class="button">Quieres crear un libro? Clickea</a>
+
 
 <!-- Más contenido de tu página -->
 
