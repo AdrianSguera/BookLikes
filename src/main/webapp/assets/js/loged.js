@@ -46,13 +46,12 @@ function buscarLibro() {
         }
     });
 }
-    function newfavorito(idlibro, idusuario) {
+    function newfavorito(idlibro) {
         $.ajax({
             type: "POST",
-            url: "api", // Reemplaza "apiservlet" con la URL correcta de tu API
+            url: "api",
             data: {
-                idlibro: idlibro,
-                idusuario: idusuario
+                idlibro: idlibro
             },
             success: function(response) {
                 // Manejar la respuesta de la API aquí

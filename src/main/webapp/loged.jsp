@@ -50,7 +50,7 @@
         <td><%= libro.getDescripcion() %></td>
         <td><%= libro.getAutor() %></td>
         <td><%= libro.getFavoritos() %></td>
-        <td><i class="fa fa-heart" onclick="newfavorito(<%= libro.getId() %>, <%= libro.getIdUsusario() %>)"></i></td>
+        <td><i class="fa fa-heart" onclick="newfavorito(<%= libro.getId() %>, <%= request.getAttribute("iduser") %>)"></i></td>
     </tr>
     <%
             }

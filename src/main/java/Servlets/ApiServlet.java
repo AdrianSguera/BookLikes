@@ -16,14 +16,14 @@ public class ApiServlet extends HttpServlet {
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException{
         int idlibro = Integer.parseInt(request.getParameter("idlibro"));
-        int idusuario = Integer.parseInt(request.getParameter("idusuario"));
         Usuario user = (Usuario) request.getSession().getAttribute("user");
+        int idusuario = user.getId();
         if (user==null){
             response.setStatus(HttpServletResponse.SC_SEE_OTHER);
             response.setHeader("Location", "/login");
         }else {
             AppController controller = new AppController();
-            controller.newFavorito(idlibro,idusuario);
+            controller.newFavorito(idusuario,idlibro);
         }
     }
 }

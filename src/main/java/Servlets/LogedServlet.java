@@ -22,10 +22,12 @@ public class LogedServlet extends HttpServlet {
         request.setAttribute("libros",libros);
         List<Libro> favLibrosByUser = controller.getLibrosUserLike(user);
         request.setAttribute("favLibrosByUser",favLibrosByUser);
+        int iduser = user.getId();
+        request.setAttribute("iduser",iduser);
         request.getRequestDispatcher("loged.jsp").forward(request,response);
     }
 
-    public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException{
-
+    public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+        request.getRequestDispatcher("loged.jsp").forward(request,response);
     }
 }

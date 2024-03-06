@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<link rel="stylesheet" href="assets/css/login.css">
 <html>
 <head>
     <meta charset="UTF-8">
@@ -15,12 +16,10 @@
 </head>
 <body>
 <h1>Registrarse</h1>
-<form method="post">
-    <label for="username">Usuario:</label><br>
-    <input type="text" id="username" name="username" required><br>
-    <label for="password">Contraseña:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
-    <input type="submit" value="Registrarse">
+<form class="form-signup" action="register" method="post">
+    <input type="text" id="user-name" class="form-control" placeholder="username" name="username" required="" autofocus="">
+    <input type="password" id="user-pass" class="form-control" placeholder="password" name="password" required autofocus="">
+    <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
 </form>
 </body>
 </html>
