@@ -15,15 +15,21 @@ import java.util.List;
 @WebServlet (name = "EditServlet",value = "/edit")
 public class EditServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        AppController controller = new AppController();
+        Usuario user = (Usuario) request.getSession().getAttribute("user");
+
+        int idlibro = Integer.parseInt(request.getParameter("idlibro"));
+        Libro libro=controller.getLibrosById(idlibro);
+        request.setAttribute("libro",libro);
+        request.getRequestDispatcher("edit.jsp").forward(request,response);
 
     }
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException {
         AppController controller = new AppController();
-        Usuario user = (Usuario) request.getSession().getAttribute("user");
+        int idlibro = Integer.parseInt(request.getParameter("idlibro"));
         String titulo = request.getParameter("titulo");
         String descripcion = request.getParameter("descripcion");
         String autor = request.getParameter("autor");
-        int idlibro = Integer.parseInt(request.getParameter("idlibro"));
         controller.changeTituloLibro(idlibro,titulo);
         controller.changeDescripcionLibro(idlibro,descripcion);
         controller.changeAutorLibro(idlibro,autor);

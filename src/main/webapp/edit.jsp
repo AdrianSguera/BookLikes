@@ -13,11 +13,12 @@
 <body>
 
 <div class="two">
-    <form method="post" action="edit">
+    <form method="get" action="edit">
         <label for="title" >Título:</label>
+        <input type="hidden" name="idlibro" value="${libro.idlibro}">
         <input type="text" id="title" name="titulo" style="
                   width: 80%;
-                     margin-left: 10px;">
+                     margin-left: 10px;" value="${libro.titulo}">
 
         <label for="descripcion">Descripción:</label>
         <textarea id="descripcion" name="descripcion" rows="3" cols="21" style="margin-left:10px; width: 80%;"></textarea>
