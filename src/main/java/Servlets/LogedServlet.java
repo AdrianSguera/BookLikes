@@ -28,6 +28,13 @@ public class LogedServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+        AppController controller1 = new AppController();
+        String titulo = request.getParameter("titulo");
+        String autor = request.getParameter("autor");
+        String descripcion = request.getParameter("descripcion");
+        Usuario usuario = (Usuario) request.getSession().getAttribute("user");
+        controller1.newLibro(titulo,autor,descripcion,usuario.getId());
+
         request.getRequestDispatcher("loged.jsp").forward(request,response);
     }
 }
