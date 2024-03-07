@@ -15,16 +15,26 @@ import java.util.List;
 
 @WebServlet (name = "UserbooksServlet",value = "/mybooks")
 public class UserbooksServlet extends HttpServlet {
-    AppController controller = new AppController();
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        AppController controller = new AppController();
         Usuario user = (Usuario) request.getSession().getAttribute("user");
         List<Libro> libros = controller.getLibrosByUser(user);
         request.setAttribute("libroscreados",libros);
         int iduser = user.getId();
         request.setAttribute("iduser",iduser);
-        request.getRequestDispatcher("loged.jsp").forward(request,response);
+        request.getRequestDispatcher("userbooks.jsp").forward(request,response);
     }
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+        AppController appController = new AppController();
+        Usuario user = (Usuario) request.getSession().getAttribute("user");
+        String titulo = request.getParameter("titulo");
+        String descripcion = request.getParameter("descripcion");
+        String autor = request.getParameter("autor");
+        appController.newLibro(titulo,autor,descripcion, user.getId());
 
+        List<Libro> libros = appController.getLibrosByUser(user);
+        request.setAttribute("libroscreados",libros);
+        response.sendRedirect("mybooks");
     }
 }

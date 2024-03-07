@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lenovo
-  Date: 07/03/2024
-  Time: 15:58
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ceica.booklikes.modelos.LibroFav" %>
@@ -22,7 +15,6 @@
 
 </head>
 <body>
-<border>
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> BookLikes</h1>
     <div class="box">
         <div class="one">
@@ -33,7 +25,7 @@
                     <th>Título</th>
                     <th>Descripción</th>
                     <th style="width: 20%;">Autor</th>
-                    <th style="width: 11%;">Edit</th>
+                    <th style="width: 11%;">Editar</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -68,14 +60,14 @@
         </form>
 
         <div class="two">
-            <form method="post" action="loged">
+            <form method="post" action="mybooks">
                 <label for="title" >Título:</label>
                 <input type="text" id="title" name="titulo" style="
                   width: 80%;
                      margin-left: 10px;">
 
                 <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="3" cols="21" style="margin-left:10px; width: 80%;" 80%=""></textarea>
+                <textarea id="descripcion" name="descripcion" rows="3" cols="21" style="margin-left:10px; width: 80%;"></textarea>
 
                 <label for="autor">Autor:</label>
                 <input type="text" id="autor" name="autor" style="
@@ -87,6 +79,5 @@
             </form>
         </div>
     </div>
-</border>
 </body>
 </html>

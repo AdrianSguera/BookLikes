@@ -56,7 +56,7 @@ public class AppController {
         return new Usuario().modificar("password = ? WHERE username = ?", dato, username);
     }
     public boolean newLibro(String titulo, String autor, String descripcion, int idUser){
-        return new Libro().insertar("(titulo,autor,descripcion,idUser) values (?,?,?,?)", titulo, autor, descripcion, idUser);
+        return new Libro().insertar("(titulo,autor,descripcion,idUsuarios) values (?,?,?,?)", titulo, autor, descripcion, idUser);
     }
     public boolean deleteLibroById(int idLibro) {
         return new Libro().eliminar("idLibros=?", idLibro);
