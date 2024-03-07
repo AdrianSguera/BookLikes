@@ -38,7 +38,7 @@
                     <td><%= libro.getTitulo() %></td>
                     <td><%= libro.getDescripcion() %></td>
                     <td><%= libro.getAutor() %></td>
-                    <td> <i class="fa-regular fa-pen-to-square" style=""></i>
+                    <td><a href="edit"><i class="fa-regular fa-pen-to-square" style=""></i></a>
                         <i  onclick="borrar(<%= libro.getId() %>)" class="fa-solid fa-trash" style="margin-left: 10px;"></i>
                     </td>
                 </tr>

@@ -62,14 +62,14 @@ public class AppController {
     public boolean deleteLibroById(int idLibro) {
         return new Libro().eliminar("idLibros=?", idLibro);
     }
-    public boolean changeTituloLibro(String titulo, String dato) {
-        return new Libro().modificar("titulo = ? WHERE idLibros = ?", dato, titulo);
+    public boolean changeTituloLibro(int idlibro, String dato) {
+        return new Libro().modificar("titulo = ? WHERE idLibros = ?", dato, idlibro);
     }
-    public boolean changeAutorLibro(String autor, String dato) {
-        return new Libro().modificar("autor = ? WHERE idLibros = ?", dato, autor);
+    public boolean changeAutorLibro(int idlibro, String dato) {
+        return new Libro().modificar("autor = ? WHERE idLibros = ?", dato, idlibro);
     }
-    public boolean changeDescripcionLibro(String descripcion, String dato) {
-        return new Libro().modificar("descripcion = ? WHERE idLibros = ?", dato, descripcion);
+    public boolean changeDescripcionLibro(int idlibro, String dato) {
+        return new Libro().modificar("descripcion = ? WHERE idLibros = ?", dato, idlibro);
     }
     public boolean newFavorito(int idUser, int idLibro){
         return new Favorito().insertar("(idUsuarios,idLibros) values (?,?)", idUser, idLibro);
