@@ -24,7 +24,6 @@ public class ApiServlet extends HttpServlet {
                 controller.deleteFavoritoById(idusuario,idlibro);
             }
         }catch (Exception e2){
-
         }
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException {

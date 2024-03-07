@@ -1,9 +1,12 @@
 
-/* Estilos para la página */
+   /* Estilos para la página */
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -11,31 +14,10 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Estilos para la caja principal */
-.box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Estilos para los botones */
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-    background-color: #04AA6D;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #038c58;
-}
-
 /* Estilos para el formulario de búsqueda */
 form {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -53,6 +35,29 @@ input[type="search"] {
 input[type="search"]:focus {
     outline: none;
     border-color: #04AA6D;
+}
+
+/* Estilos para los botones */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #038c58;
 }
 
 /* Estilos para los elementos de la tabla */

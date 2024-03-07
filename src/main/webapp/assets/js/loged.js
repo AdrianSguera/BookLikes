@@ -32,18 +32,30 @@ function cambiarTabla() {
         tablaLibrosFav.style.display = 'table';
     }
 }
+var resultadosBusqueda = [];
 
 function buscarLibro() {
     var inputBusqueda = document.getElementById('inputBusqueda').value.toLowerCase();
     var rows = document.querySelectorAll('#tablaLibros tbody tr');
 
+    // Limpiar los resultados anteriores
+    resultadosBusqueda = [];
+
     rows.forEach(function(row) {
         var titulo = row.cells[1].innerText.toLowerCase();
         if (titulo.includes(inputBusqueda)) {
             row.style.display = '';
+            resultadosBusqueda.push(row);
         } else {
             row.style.display = 'none';
         }
+    });
+}
+
+function restaurarResultados() {
+    // Mostrar solo los resultados de la búsqueda almacenados en la variable
+    resultadosBusqueda.forEach(function(row) {
+        row.style.display = '';
     });
 }
     function newfavorito(idlibro) {

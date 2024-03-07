@@ -2,6 +2,7 @@ package com.ceica.booklikes.Controller;
 
 import com.ceica.booklikes.modelos.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppController {
@@ -78,4 +79,15 @@ public class AppController {
     }
 
     public boolean deleteFavoritoById(int Iduser,int idlibro){return new Favorito().eliminar("idUsuarios=? and idLibros=?",Iduser,idlibro);}
+
+    public List<Integer> getFavoritosLibro(int idLibro){
+        List<Favorito> favoritoList = Favorito.getFavoritosBD();
+        List<Favorito> favoritosLibro = favoritoList.stream().filter(favorito -> favorito.getIdLibro() == idLibro).toList();
+        List<Integer> integerList = new ArrayList<>();
+        for (Favorito favorito : favoritosLibro){
+            integerList.add(favorito.getIdUsusario());
+        }
+        return integerList;
+    }
 }
+

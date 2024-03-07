@@ -5,14 +5,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title style="margin-top: 8px">BookLikes</title>
+    <title style="margin-top: 8px">Mybooks</title>
     <link rel="stylesheet" href="assets/css/book.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/userbooks.js"></script> <!-- Incluye tu archivo JavaScript externo -->
-
 </head>
 <body>
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> BookLikes</h1>
@@ -40,7 +39,7 @@
                     <td><%= libro.getDescripcion() %></td>
                     <td><%= libro.getAutor() %></td>
                     <td> <i class="fa-regular fa-pen-to-square" style=""></i>
-                        <i onclick="borrar" class="fa-solid fa-trash" style="margin-left: 10px;"></i>
+                        <i onclick="borrar(<%= libro.getId() %>)" class="fa-solid fa-trash" style="margin-left: 10px;"></i>
                     </td>
                 </tr>
                 <%
@@ -52,11 +51,8 @@
         </div>
 
         <form>
-            <label for="search">Search:</label>
-            <input onclick="buscarLibro()" type="search" id="search" name="search" placeholder="Buscar" style="
-                  width: 80%;
-                     margin-left: 10px;">
-
+            <label for="inputBusqueda">Search:</label>
+            <input oninput="buscarLibro()" type="search" id="inputBusqueda" name="inputBusqueda" placeholder="Buscar" style="width: 80%; margin-left: 10px;">
         </form>
 
         <div class="two">

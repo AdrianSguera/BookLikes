@@ -25,10 +25,9 @@
     </style>
 </head>
 <body>
-<border>
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> BookLikes</h1>
     <div style="float: right; margin-top: 5px; margin-right: 45px;">
-        <input class="campo" type="submit" value="My books">
+        <a href="mybooks"><input  class="campo" type="submit" value="My books"></a>
     </div>
 
     <div class="box">
@@ -100,12 +99,11 @@
         </table>
 
         <form>
-            <label for="search">Search:</label>
-            <input onclick="buscarLibro()" type="search" id="search" name="search" placeholder="Buscar" style="width: 80%; margin-left: 10px;">
+            <label for="inputBusqueda">Search:</label>
+            <input oninput="buscarLibro()" type="search" id="inputBusqueda" name="inputBusqueda" placeholder="Buscar" style="width: 80%; margin-left: 10px;">
         </form>
     </div>
 
     <button onclick="cambiarTabla()">Mostrar Libros Favoritos</button>
-</border>
 </body>
 </html>

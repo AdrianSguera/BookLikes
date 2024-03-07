@@ -47,14 +47,13 @@ public class Favorito extends ModeloBase{
 
     public static List<Favorito> getFavoritosBD() {
         List<Favorito> favoritoList = new ArrayList<>();
-        List<Object> objectList = new Favorito().leerTodos("favoritos");
+        List<Object> objectList = new Favorito().leerTodos("select * from favoritos");
         for (Object obj : objectList) {
             Object[] objects = (Object[]) obj;
             Favorito favorito = new Favorito();
-            favorito.setId((int) objects[0]);
-            favorito.setIdUsusario((int) objects[1]);
-            favorito.setIdLibro((int) objects[2]);
-            favorito.setFechaFavorito((LocalDateTime) objects[3]);
+            favorito.setIdUsusario((int) objects[0]);
+            favorito.setIdLibro((int) objects[1]);
+            favorito.setFechaFavorito((LocalDateTime) objects[2]);
             favoritoList.add(favorito);
         }
         return favoritoList;

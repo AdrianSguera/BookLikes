@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         try {
         if (controller.isLoged(user,password)){
             HttpSession session = request.getSession();
-            session.setAttribute("user", controller.getUsuarioLogeado() );
+            session.setAttribute("user", controller.getUsuarioLogeado());
             response.sendRedirect("loged");
         } else {
             request.setAttribute("message", "Usuario o Contraseña incorrectos");
