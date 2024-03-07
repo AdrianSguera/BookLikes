@@ -43,7 +43,6 @@
         <th>Descripción</th>
         <th style="width: 20%;">Autor</th>
         <th style="width: 12%;">Likes</th>
-        <th style="width: 11%;">Edit</th>
     </tr>
     </thead>
     <tbody>
@@ -57,11 +56,8 @@
         <td><%= libro.getTitulo() %></td>
         <td><%= libro.getDescripcion() %></td>
         <td><%= libro.getAutor() %></td>
-        <td><%= libro.getFavoritos() %></td>
-        <td><i class="fa-regular fa-star" onclick="newfavorito(<%= libro.getId() %>, <%= request.getAttribute("iduser") %>)"></i></td>
-        <td> <i class="fa-regular fa-pen-to-square" style=""></i>
-            <i onclick="borrar" class="fa-solid fa-trash" style="margin-left: 10px;"></i>
-        </td>
+        <td><%= libro.getFavoritos() %>
+        <i class="fa-regular fa-star" onclick="newfavorito(<%= libro.getId() %>, <%= request.getAttribute("iduser") %>)"></i></td>
     </tr>
     <%
             }
@@ -78,7 +74,7 @@
         <th>Título</th>
         <th>Descripción</th>
         <th>Autor</th>
-        <th>Acciones</th>
+        <th>Likes</th>
     </tr>
     </thead>
     <tbody>
@@ -92,6 +88,7 @@
         <td><%= libro.getTitulo() %></td>
         <td><%= libro.getDescripcion() %></td>
         <td><%= libro.getAutor() %></td>
+        <td><i class="fa-regular fa-star" onclick="deletefavorito(<%= libro.getId() %>, <%= request.getAttribute("iduser") %>)"></i></td>
     </tr>
     <%
             }
@@ -99,7 +96,6 @@
     %>
     </tbody>
 </table>
-
 
     <form>
         <label for="search">Search:</label>
@@ -109,25 +105,6 @@
 
     </form>
 
-<div class="two">
-    <form method="post" action="loged">
-        <label for="title" >Título:</label>
-        <input type="text" id="title" name="titulo" style="
-                  width: 80%;
-                     margin-left: 10px;">
-
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" rows="3" cols="21" style="margin-left:10px; width: 80%;" 80%=""></textarea>
-
-        <label for="autor">Autor:</label>
-        <input type="text" id="autor" name="autor" style="
-                margin-block-end: 5px;
-                width: 80%;
-                margin-left: 10px;"><br>
-
-        <input type="submit" value="Enviar" style="margin-left: 10px">
-    </form>
-</div>
 </div>
     <button onclick="cambiarTabla()">Mostrar Libros Favoritos</button>
 </border>

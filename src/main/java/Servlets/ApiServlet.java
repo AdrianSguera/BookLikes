@@ -15,15 +15,32 @@ public class ApiServlet extends HttpServlet {
 
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException{
-        int idlibro = Integer.parseInt(request.getParameter("idlibro"));
         Usuario user = (Usuario) request.getSession().getAttribute("user");
-        int idusuario = user.getId();
-        if (user==null){
-            response.setStatus(HttpServletResponse.SC_SEE_OTHER);
-            response.setHeader("Location", "/login");
-        }else {
-            AppController controller = new AppController();
-            controller.newFavorito(idusuario,idlibro);
+        try {
+            int idlibro = Integer.parseInt(request.getParameter("idlibro"));
+            int idusuario = user.getId();
+            if (user == null) {
+                response.setStatus(HttpServletResponse.SC_SEE_OTHER);
+                response.setHeader("Location", "/login");
+            } else {
+                AppController controller = new AppController();
+                controller.newFavorito(idusuario, idlibro);
+            }
+        }catch (Exception e){
+
+        }
+        try {
+            int idfavorito = Integer.parseInt(request.getParameter("idfavorito"));
+            int idusuario = user.getId();
+            if (user==null){
+                response.setStatus(HttpServletResponse.SC_SEE_OTHER);
+                response.setHeader("Location", "/login");
+            }else {
+                AppController controller = new AppController();
+                controller.deleteFavoritoById(idusuario,idfavorito);
+            }
+        }catch (Exception e2){
+
         }
     }
 }

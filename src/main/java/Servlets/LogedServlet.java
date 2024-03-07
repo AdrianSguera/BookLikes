@@ -34,7 +34,6 @@ public class LogedServlet extends HttpServlet {
         String descripcion = request.getParameter("descripcion");
         Usuario usuario = (Usuario) request.getSession().getAttribute("user");
         controller1.newLibro(titulo,autor,descripcion,usuario.getId());
-
         request.getRequestDispatcher("loged.jsp").forward(request,response);
     }
 }

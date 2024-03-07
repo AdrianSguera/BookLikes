@@ -62,4 +62,22 @@ function buscarLibro() {
                 alert("Error al agregar favorito: " + error);
             }
         });
+
+}
+function deletefavorito(idfavorito) {
+    $.ajax({
+        type: "POST",
+        url: "api",
+        data: {
+            idfavorito: idfavorito
+        },
+        success: function(response) {
+            // Manejar la respuesta de la API aquí
+            alert("Favorito agregado correctamente");
+        },
+        error: function(xhr, status, error) {
+            // Manejar el error de la solicitud AJAX aquí
+            alert("Error al agregar favorito: " + error);
+        }
+    });
 }

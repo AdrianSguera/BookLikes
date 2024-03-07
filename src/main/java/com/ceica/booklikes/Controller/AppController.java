@@ -76,4 +76,6 @@ public class AppController {
     public List<LibroFav> getFavoritosByLibro(){
         return new LibroFav().getFavoritosByLibro();
     }
+
+    public boolean deleteFavoritoById(int Iduser,int Idfavorito){return new Favorito().eliminar("idUsuarios=? and idFavoritos=?",Iduser,Idfavorito);}
 }
