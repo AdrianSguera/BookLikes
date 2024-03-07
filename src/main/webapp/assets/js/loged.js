@@ -64,16 +64,16 @@ function buscarLibro() {
         });
 
 }
-function deletefavorito(idfavorito) {
+function deletefavorito(idlibro) {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "api",
         data: {
-            idfavorito: idfavorito
+            idlibro: idlibro
         },
         success: function(response) {
             // Manejar la respuesta de la API aquí
-            alert("Favorito agregado correctamente");
+            alert("Favorito eliminado correctamente");
         },
         error: function(xhr, status, error) {
             // Manejar el error de la solicitud AJAX aquí
