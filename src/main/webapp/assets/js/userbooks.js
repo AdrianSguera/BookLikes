@@ -18,18 +18,11 @@ function buscarLibro() {
         }
     });
 }
-
-function restaurarResultados() {
-    // Mostrar solo los resultados de la búsqueda almacenados en la variable
-    resultadosBusqueda.forEach(function(row) {
-        row.style.display = '';
-    });
-}
 function borrar(idlibro){
-    var baseUrl = window.location.protocol + "//" + window.location.host + "/BookLikes/apibook?idlibro="+idlibro;
+    var baseUrl = window.location.protocol + "//" + window.location.host + "/BookLikes/mybooks?idlibro="+idlibro;
 
     fetch(baseUrl, {
-        method: 'GET', // Puedes cambiar este método según tu necesidad (POST, PUT, DELETE, etc.)
+        method: 'POST', // Puedes cambiar este método según tu necesidad (POST, PUT, DELETE, etc.)
         headers: {
             'Content-Type': 'text', // Puedes ajustar el tipo de contenido según tu necesidad
         },
@@ -37,7 +30,8 @@ function borrar(idlibro){
     })
         .then(response => response.text()) // Procesamos la respuesta como JSON
         .then(data => {
-            document.getElementById("tablaLibros").innerHTML=data;
+            document.getElementById("tabladelibros").innerHTML=data;
+            console.log(data);
         })
         .catch(error => {
             console.error('Error:', error); // Manejamos los errores

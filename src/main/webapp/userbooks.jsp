@@ -27,7 +27,7 @@
                     <th style="width: 11%;">Editar</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="tabladelibros">
                 <%
                     List<Libro> libros = (List<Libro>) request.getAttribute("libroscreados");
                     if (libros != null) {
@@ -39,7 +39,7 @@
                     <td><%= libro.getDescripcion() %></td>
                     <td><%= libro.getAutor() %></td>
                     <td> <i class="fa-regular fa-pen-to-square" style=""></i>
-                        <i onclick="borrar(<%= libro.getId() %>)" class="fa-solid fa-trash" style="margin-left: 10px;"></i>
+                        <i  onclick="borrar(<%= libro.getId() %>)" class="fa-solid fa-trash" style="margin-left: 10px;"></i>
                     </td>
                 </tr>
                 <%
