@@ -13,23 +13,24 @@
 <body>
 
 <div class="two">
-    <form method="get" action="edit">
+    <form method="post" action="edit">
         <label for="title" >Título:</label>
-        <input type="hidden" name="idlibro" value="${libro.idlibro}">
         <input type="text" id="title" name="titulo" style="
                   width: 80%;
-                     margin-left: 10px;" value="${libro.titulo}">
+                     margin-left: 10px;" value="${libro.getTitulo()}">
 
         <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" rows="3" cols="21" style="margin-left:10px; width: 80%;"></textarea>
+        <textarea id="descripcion" name="descripcion" rows="3" cols="21" style="margin-left:10px; width: 80%;">${libro.getDescripcion()}</textarea>
 
         <label for="autor">Autor:</label>
         <input type="text" id="autor" name="autor" style="
                 margin-block-end: 5px;
                 width: 80%;
-                margin-left: 10px;"><br>
+                margin-left: 10px;" value="${libro.getAutor()}"><br>
 
-        <a href="mybooks"><input type="submit" value="Enviar" style="margin-left: 10px"></a>
+        <input type="hidden" name="idLibro" value="${libro.getId()}">
+
+        <input type="submit" value="Enviar" style="margin-left: 10px">
     </form>
 </div>
 </body>

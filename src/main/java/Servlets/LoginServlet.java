@@ -15,8 +15,8 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("login.jsp").forward(request,response);
         request.getSession().invalidate();
+        request.getRequestDispatcher("login.jsp").forward(request,response);
     }
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
         AppController controller = new AppController();
