@@ -27,37 +27,38 @@ public class UserbooksServlet extends HttpServlet {
         request.getRequestDispatcher("userbooks.jsp").forward(request,response);
     }
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+        AppController appcontroller = new AppController();
+        Usuario user = (Usuario) request.getSession().getAttribute("user");
         if (request.getParameter("idlibro")!=null){
-            Usuario user = (Usuario) request.getSession().getAttribute("user");
             int idlibro = Integer.parseInt(request.getParameter("idlibro"));
-            AppController controller = new AppController();
-            List<Integer> favoritos =  controller.getFavoritosLibro(idlibro);
+            List<Integer> favoritos =  appcontroller.getFavoritosLibro(idlibro);
             if (!favoritos.isEmpty()){
                 for (int i = 0; i < favoritos.size(); i++) {
-                    controller.deleteFavoritoById(favoritos.get(i),idlibro);
+                    appcontroller.deleteFavoritoById(favoritos.get(i),idlibro);
                 }
             }
-            controller.deleteLibroById(idlibro);
-            List<Libro> libros = controller.getLibrosByUser(user);
+            appcontroller.deleteLibroById(idlibro);
+            List<Libro> libros = appcontroller.getLibrosByUser(user);
             StringBuilder tbody = new StringBuilder();
             for (Libro libro : libros) {
                 tbody.append("<tr><td>").append(libro.getId()).append("</td>")
                         .append("<td>").append(libro.getTitulo()).append("</td>")
                         .append("<td>").append(libro.getDescripcion()).append("</td>")
                         .append("<td>").append(libro.getAutor()).append("</td>")
-                        .append("<td>").append("<i class=\"fa-regular fa-pen-to-square\" style=\"\"></i>")
+                        .append("<td><a href=\"edit?titulo=").append(libro.getTitulo()).append("\">")
+                        .append("<i class=\"fa-regular fa-pen-to-square\" style=\"\"></i></a>")
                         .append("<i class=\"fa-solid fa-trash\" onClick=\"borrar(").append(libro.getId()).append(")\" style=\"margin-left: 10px;\"></i>")
-                        .append("</td></tr>")
+                        .append("</td></tr>");
+
                 ;
             }
             if (libros.isEmpty()) {
-                tbody.append("<td>No hay libros</td>");
+                tbody.append("<tr><td colspan=\"5\">No hay libros</td></tr>");
             }
             PrintWriter out =response.getWriter();
             out.write(tbody.toString());
         }else {
             AppController appController = new AppController();
-            Usuario user = (Usuario) request.getSession().getAttribute("user");
             String titulo = request.getParameter("titulo");
             String descripcion = request.getParameter("descripcion");
             String autor = request.getParameter("autor");
@@ -67,4 +68,5 @@ public class UserbooksServlet extends HttpServlet {
             response.sendRedirect("mybooks");
         }
     }
+
 }

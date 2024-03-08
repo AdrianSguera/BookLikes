@@ -29,8 +29,8 @@ public class LibroFav extends Libro {
         List<LibroFav> libroList = new ArrayList<>();
         List<Object> objectList = new Libro().leerTodos("select libros.idLibros, libros.titulo, libros.autor, libros.descripcion," +
                 " libros.FechaCreacion, libros.idUsuarios, count(favoritos.idLibros) as favoritos from favoritos \n" +
-                "inner join libros on libros.idLibros = favoritos.idLibros\n" +
-                "group by favoritos.idLibros");
+                "right join libros on libros.idLibros = favoritos.idLibros\n" +
+                "group by libros.idLibros");
         for (Object obj : objectList) {
             Object[] objects = (Object[]) obj;
             LibroFav libro = new LibroFav();

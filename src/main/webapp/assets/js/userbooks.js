@@ -19,7 +19,7 @@ function buscarLibro() {
     });
 }
 function borrar(idlibro){
-    var baseUrl = window.location.protocol + "//" + window.location.host + "/BookLikes/mybooks?idlibro="+idlibro;
+    var baseUrl = window.location.protocol + "//" + window.location.host + "/BookLikes_war/mybooks?idlibro="+idlibro;
 
     fetch(baseUrl, {
         method: 'POST', // Puedes cambiar este método según tu necesidad (POST, PUT, DELETE, etc.)
@@ -36,5 +36,4 @@ function borrar(idlibro){
         .catch(error => {
             console.error('Error:', error); // Manejamos los errores
         });
-
 }

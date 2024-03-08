@@ -54,6 +54,7 @@
             <label for="inputBusqueda">Search:</label>
             <input oninput="buscarLibro()" type="search" id="inputBusqueda" name="inputBusqueda" placeholder="Buscar" style="width: 80%; margin-left: 10px;">
         </form>
+        <a href="loged"><button>Volver a todos los libros</button></a>
 
         <div class="two">
             <form method="post" action="mybooks">

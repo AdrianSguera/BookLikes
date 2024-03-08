@@ -42,7 +42,7 @@
                     <th style="width: 12%;">Likes</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="tabladeLibrosFav">
                 <%
                     List<LibroFav> libros = (List<LibroFav>) request.getAttribute("libros");
                     if (libros != null) {
@@ -76,7 +76,7 @@
                 <th>Likes</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="tabladeLibrosUser">
             <%
                 List<Libro> favLibrosByUser = (List<Libro>) request.getAttribute("favLibrosByUser");
                 if (favLibrosByUser != null) {
@@ -88,7 +88,7 @@
                 <td><%= libro.getDescripcion() %></td>
                 <td><%= libro.getAutor() %></td>
                 <td>
-                    <i class="fa-regular fa-star" onclick="deletefavorito(<%= libro.getId() %>, <%= request.getAttribute("iduser") %>)"></i>
+                    <i class="fa-regular fa-star" onclick="deletefavorito(<%= libro.getId() %>, <%= request.getAttribute("iduser") %><%= libro.getTitulo() %>)"></i>
                 </td>
             </tr>
             <%
@@ -104,6 +104,7 @@
         </form>
     </div>
 
-    <button onclick="cambiarTabla()">Mostrar Libros Favoritos</button>
+    <button id="cambiarTabla" onclick="cambiarTabla()">Mostrar Libros Favoritos</button>
+    <a href="login"><button>Cerrar sesión</button></a>
 </body>
 </html>
