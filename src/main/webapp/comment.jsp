@@ -11,13 +11,13 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
+<h2>BookLikes</h2>
 <div class="container mt-5">
     <div class="cabecera">
-        <a href="loggedUser.jsp">
+        <a href="loggedUser">
             <button>Return to main page</button>
         </a>
     </div>
-    <h2>BookLikes</h2>
 
     <!-- Card Deck de Bootstrap para mostrar la lista de libros -->
     <div class="card-deck mt-4">
