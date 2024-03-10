@@ -6,88 +6,103 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppController {
-    private Usuario usuariologeado;
+    private User userLogged;
     public AppController() {
     }
 
-    public Usuario getUsuarioLogeado() {
-        return usuariologeado;
+    public boolean Login(String userOrEmail, String pass) {
+        this.userLogged = User.login(userOrEmail, pass);
+        return this.userLogged!=null;
     }
 
-    public void setUsuarioLogeado(Usuario usuario) {
-        this.usuariologeado = usuario;
+    public User getUserLogged() {
+        return userLogged;
     }
 
-    public List<Usuario> getUsuariosBD() {
-        return Usuario.getUsuariosBD();
+    public void setUserLogged(User user) {
+        this.userLogged = user;
     }
 
-    public List<Libro> getLibrosBD() {
-        return Libro.getLibrosBD();
+    public List<User> getUsersDB() {
+        return User.getUsersDB();
     }
 
-    public List<Libro> getLibrosByUser(Usuario usuario) {
-        return new Libro().getByUser(usuario);
-    }
-    public int countLibrosByUser(Usuario usuario){
-        return new Favorito().getFavoritoByUser(usuario).size();
-    }
-    public List<Libro> getLibrosUserLike(Usuario usuario){
-        return new Libro().getByUserLike(usuario);
-    }
-    public boolean isLoged(String usu, String pass) {
-        this.usuariologeado = Usuario.login(usu, pass);
-        return this.usuariologeado!=null;
-    }
-    public Libro getLibroByTitulo(String titulo){
-        return new Libro().getLibroByTitulo(titulo).get(0);
+    public List<Book> getBooksDB() {
+        return Book.getBooksDB();
     }
 
-    public boolean newUsuario(String username, String password){
-        return new Usuario().insertar("(username,password) values (?,?)", username, password);
-    }
-    public boolean deleteUsuarioById(int idUser) {
-        return new Usuario().eliminar("iduser=?", idUser);
-    }
-    public boolean changeUsernameUsuario(int idUser, String dato) {
-        return new Usuario().modificar("username = ? WHERE iduser = ?", dato, idUser);
+    public List<BookDTO> getBookDTOsDB(){
+        return new BookDTO().getBookDTOsDB();
     }
 
-    public boolean changePasswordUsuario(String username, String dato) {
-        return new Usuario().modificar("password = ? WHERE username = ?", dato, username);
-    }
-    public boolean newLibro(String titulo, String autor, String descripcion, int idUser){
-        return new Libro().insertar("(titulo,autor,descripcion,idUsuarios) values (?,?,?,?)", titulo, autor, descripcion, idUser);
-    }
-    public boolean deleteLibroById(int idLibro) {
-        return new Libro().eliminar("idLibros=?", idLibro);
-    }
-    public boolean changeTituloLibro(int idlibro, String dato) {
-        return new Libro().modificar("titulo = ? WHERE idLibros = ?", dato, idlibro);
-    }
-    public boolean changeAutorLibro(int idlibro, String dato) {
-        return new Libro().modificar("autor = ? WHERE idLibros = ?", dato, idlibro);
-    }
-    public boolean changeDescripcionLibro(int idlibro, String dato) {
-        return new Libro().modificar("descripcion = ? WHERE idLibros = ?", dato, idlibro);
-    }
-    public boolean newFavorito(int idUser, int idLibro){
-        return new Favorito().insertar("(idUsuarios,idLibros) values (?,?)", idUser, idLibro);
-    }
-    public List<LibroFav> getFavoritosByLibro(){
-        return new LibroFav().getFavoritosByLibro();
+    public List<BookDTO> getBookDTOsByUser() {
+        return new BookDTO().getBookDTOsByUser(userLogged);
     }
 
-    public boolean deleteFavoritoById(int Iduser,int idlibro){return new Favorito().eliminar("idUsuarios=? and idLibros=?",Iduser,idlibro);}
+    public List<Like> getLikesDB(){return new Like().getLikesDB();}
 
-    public List<Integer> getFavoritosLibro(int idLibro){
-        List<Favorito> favoritoList = Favorito.getFavoritosBD();
-        List<Favorito> favoritosLibro = favoritoList.stream().filter(favorito -> favorito.getIdLibro() == idLibro).toList();
-        List<Integer> integerList = new ArrayList<>();
-        for (Favorito favorito : favoritosLibro){
-            integerList.add(favorito.getIdUsusario());
-        }
-        return integerList;
+    public List<Book> getBooksUserLike(){
+        return new Book().getBooksUserLike(userLogged);
+    }
+
+    public BookDTO getBookDTOById(int idBook){
+        return new BookDTO().getBookDTOById(idBook);
+    }
+
+    public boolean newUser(String username, String password, String email){
+        return new User().insertar("(username,password,email) values (?,?,?)", username, password, email);
+    }
+
+    public boolean deleteUserById(int idUser) {
+        return new User().eliminar("idUser=?", idUser);
+    }
+
+    public boolean editUsernameUser(int idUser, String newData) {
+        return new User().modificar("username = ? WHERE idUser = ?", newData, idUser);
+    }
+
+    public boolean editPasswordUser(int idUser, String newData) {
+        return new User().modificar("password = ? WHERE idUser = ?", newData, idUser);
+    }
+
+    public boolean newBook(String title, String author, String description, String fileName){
+        return new Book().insertar("(title,author,description,idUser,imageSource) values (?,?,?,?,?)", title, author, description, userLogged.getId(), fileName);
+    }
+
+    public boolean deleteBookById(int idBook) {
+        return new Book().eliminar("idBook=?", idBook);
+    }
+
+    public boolean editTitleBook(int idBook, String newData) {
+        return new Book().modificar("title = ? WHERE idBook = ?", newData, idBook);
+    }
+
+    public boolean editAuthorBook(int idBook, String newData) {
+        return new Book().modificar("author = ? WHERE idBook = ?", newData, idBook);
+    }
+
+    public boolean editDescriptionBook(int idBook, String newData) {
+        return new Book().modificar("description = ? WHERE idBook = ?", newData, idBook);
+    }
+
+    public boolean newLike(int idBook){
+        return new Like().insertar("(idUser,idBook) values (?,?)", userLogged.getId(), idBook);
+    }
+
+    public boolean deleteLikeById(int idBook){return new Like().eliminar("idUser=? and idBook=?",userLogged.getId(),idBook);}
+
+    public Long getAllLikesOfBookById(int idBookDTO){
+        return new Like().getAllLikesOfBookById(idBookDTO);
+    }
+
+    public boolean isBookLikedByUser(int idBook){return new Like().isBookLikedByUser(userLogged.getId(), idBook);}
+
+    public User getUserById(int idUser){
+        return new User().getUserById(idUser);
+    }
+
+    public List<Comment> getCommentsByIdBookDTO(int idBook){
+        return new Comment().getCommentsByIdBookDTO(idBook);
     }
 }
 

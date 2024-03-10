@@ -1,0 +1,37 @@
+/* Estilo para el contenedor del modal */
+.modal-container {
+    display: none; /* Por defecto oculto */
+    position: fixed; /* Fijar la posición con respecto a la ventana del navegador */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cubre todo el ancho */
+    height: 100%; /* Cubre toda la altura */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+}
+
+/* Estilo para el contenido del modal */
+.modal-content {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+/* Estilo para el contenido del modal cuando se muestra */
+.modal-container.active {
+    display: flex; /* Muestra el contenedor */
+}
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    width: 30%; /* Ajusta el ancho de cada tarjeta según tu diseño */
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+}

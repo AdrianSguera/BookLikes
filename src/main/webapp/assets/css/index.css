@@ -1,0 +1,10 @@
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    width: 30%; /* Ajusta el ancho de cada tarjeta según tu diseño */
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+}

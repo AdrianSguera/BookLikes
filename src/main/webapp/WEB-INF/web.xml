@@ -3,4 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+
+    <!-- Configuración para habilitar el soporte de multipartes -->
+    <servlet>
+        <servlet-name>newBookServlet</servlet-name>
+        <servlet-class>Servlets.NewBookServlet</servlet-class>
+        <multipart-config>
+            <!-- Tamaño máximo del archivo -->
+            <max-file-size>5242880</max-file-size> <!-- 5MB, puedes ajustarlo según tus necesidades -->
+            <!-- Tamaño máximo de todos los archivos -->
+            <max-request-size>10485760</max-request-size> <!-- 10MB, puedes ajustarlo según tus necesidades -->
+            <!-- Ubicación temporal donde se almacenan los archivos -->
+            <!--<location>/tmp</location>  Cambia la ubicación según tu entorno -->
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newBookServlet</servlet-name>
+        <url-pattern>/newBook</url-pattern> <!-- URL para la carga de archivos -->
+    </servlet-mapping>
+
 </web-app>

@@ -3,6 +3,8 @@ package com.ceica.booklikes.modelos;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -31,9 +33,8 @@ public abstract class ModeloBase {
 
     public static Connection getConnection() {
         try {
-            Connection connection = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-            return connection;
-        } catch (SQLException e) {
+            return DriverManager.getConnection(URL, USUARIO, PASSWORD);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -84,5 +85,10 @@ public abstract class ModeloBase {
         } catch (SQLException e) {
             return false;
         }
+    }
+
+    protected String dateFormatter(LocalDateTime dateTime){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy 'at' HH:mm");
+        return dateTime.format(formatter);
     }
 }

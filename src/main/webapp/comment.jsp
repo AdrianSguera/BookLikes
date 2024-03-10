@@ -13,29 +13,31 @@
 <body>
 <div class="container mt-5">
     <div class="cabecera">
-        <a href="register">
-            <button>Register</button>
-        </a>
-        <a href="login">
-            <button>Log in</button>
+        <a href="loggedUser.jsp">
+            <button>Return to main page</button>
         </a>
     </div>
     <h2>BookLikes</h2>
 
     <!-- Card Deck de Bootstrap para mostrar la lista de libros -->
     <div class="card-deck mt-4">
-        <c:forEach items="${bookDTOList}" var="bookDTO">
             <div class="card">
-                <img src="assets/images/${bookDTO.getImageSource()}" class="card-img-top" alt="<c:out value="${bookDTO.getTitle()}"/> image">
+                <img src="assets/images/${bookDTO.getImageSource()}" class="card-img-top" alt="${bookDTO.getTitle()} image">
                 <div class="card-body">
-                    <h5 class="card-title"><c:out value="${bookDTO.getTitle()}"/></h5>
-                    <p class="card-text">Author: <c:out value="${bookDTO.getAuthor()}"/></p>
-                    <p class="card-text">Description: <c:out value="${bookDTO.getDescription()}"/></p>
-                    <c:out value="${bookDTO.getLikeCount()}"/><i class="fa-solid fa-heart"></i>
+                    <h5 class="card-title">${bookDTO.getTitle()}</h5>
+                    <p class="card-text">Author: ${bookDTO.getAuthor()}</p>
+                    <p class="card-text">Description: ${bookDTO.getDescription()}</p>
+                    ${bookDTO.getLikeCount()}<i class="fa-solid fa-heart"></i>
                 </div>
             </div>
-        </c:forEach>
     </div>
+</div>
+<div>
+    <c:forEach items="${commentList}" var="comment">
+        <p>${appController.getUserById(comment.getIdUser()).getUsername()}</p>
+        <p>${comment.getCreationDate()}</p>
+        <p>${comment.getComment()}</p>
+    </c:forEach>
 </div>
 </body>
 </html>

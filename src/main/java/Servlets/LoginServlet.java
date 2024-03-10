@@ -1,39 +1,34 @@
 package Servlets;
 
+import java.io.*;
+import java.sql.Connection;
+import java.util.List;
+
 import com.ceica.booklikes.Controller.AppController;
-import com.ceica.booklikes.modelos.Usuario;
+import com.ceica.booklikes.modelos.BookDTO;
+import com.ceica.booklikes.modelos.ModeloBase;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
 
-import java.io.IOException;
-
-@WebServlet(name = "LoginServlet", value = "/login")
+@WebServlet(name = "loginServlet", value ="/login")
 public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getSession().invalidate();
+        HttpSession session = request.getSession();
+        session.invalidate();
         request.getRequestDispatcher("login.jsp").forward(request,response);
     }
-    public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
-        AppController controller = new AppController();
-        String user = request.getParameter("username");
-        String password = request.getParameter("password");
-        try {
-        if (controller.isLoged(user,password)){
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        AppController appController = new AppController();
+        if (appController.Login(request.getParameter("usernameOrEmail"), request.getParameter("password"))) {
             HttpSession session = request.getSession();
-            session.setAttribute("user", controller.getUsuarioLogeado());
-            response.sendRedirect("loged");
+            session.setAttribute("userLogged",appController.getUserLogged());
+            response.sendRedirect("loggedUser");
         } else {
-            request.setAttribute("message", "Usuario o Contraseña incorrectos");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.setAttribute("errorMessage","Incorrect user or password");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
-    }catch (Exception e){
-        request.setAttribute("message", "Usuario o Contraseña incorrectos");
-        request.getRequestDispatcher("login.jsp").forward(request, response);
-    }
     }
 }
