@@ -10,6 +10,7 @@
           integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="assets/js/myBooks.js"></script>
+    <script src="assets/js/loggedUser.js"></script>
 </head>
 <body>
 <div class="container mt-5">
@@ -22,20 +23,20 @@
         </a>
     </div>
     <h2>BookLikes</h2>
-
+    <input type="text" id="searchInput" placeholder="Search...">
     <!-- Card Deck de Bootstrap para mostrar la lista de libros -->
-    <div class="card-deck mt-4">
+    <div id="bookContainer" class="card-deck mt-4">
         <c:forEach items="${bookDTOList}" var="bookDTO">
             <div class="card">
                 <a href="comment?idBook=${bookDTO.getId()}"><img src="assets/images/${bookDTO.getImageSource()}" class="card-img-top"
-                     alt="<c:out value="${bookDTO.getTitle()}"/> image"></a>
+                     alt="${bookDTO.getTitle()} image"></a>
                 <div class="card-body">
-                    <h5 class="card-title"><c:out value="${bookDTO.getTitle()}"/></h5>
+                    <h5 class="card-title">${bookDTO.getTitle()}</h5>
                     <p class="card-text">Uploaded by: ${appController.getUserById(bookDTO.getIdUser()).getUsername()}</p>
-                    <p class="card-text">Author: <c:out value="${bookDTO.getAuthor()}"/></p>
-                    <p class="card-text">Description: <c:out value="${bookDTO.getDescription()}"/></p>
+                    <p class="card-author">Author: ${bookDTO.getAuthor()}</p>
+                    <p class="card-text">Description: ${bookDTO.getDescription()}</p>
                     <p id="likesManager${bookDTO.getId()}">
-                        <c:out value="${bookDTO.getLikeCount()}"/>
+                        ${bookDTO.getLikeCount()}
                         <c:set var="liked" value="false" />
                         <c:forEach items="${likesList}" var="like">
                             <c:if test="${like.idUser == user.id && like.idBook == bookDTO.id}">

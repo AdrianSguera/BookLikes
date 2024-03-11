@@ -104,5 +104,9 @@ public class AppController {
     public List<Comment> getCommentsByIdBookDTO(int idBook){
         return new Comment().getCommentsByIdBookDTO(idBook);
     }
+
+    public boolean newComment(String comment, int idBook){
+        return new Comment().insertar("(comment,idUser,idBook) values (?,?,?)",comment,userLogged.getId(),idBook);
+    }
 }
 

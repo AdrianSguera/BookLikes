@@ -10,7 +10,7 @@ function hideEditForm(idBookDTO) {
     modalContainer.classList.remove('active'); // Remueve la clase 'active' para ocultar el modal
 }
 
-function deleteBook(idBookDTO){
+function deleteBook(idBookDTO) {
     let baseUrl = window.location.protocol + "//" + window.location.host + "/BookLikes_war/deleteBook?idBookDTO=" + idBookDTO;
 
     fetch(baseUrl, {
@@ -29,7 +29,7 @@ function deleteBook(idBookDTO){
         });
 }
 
-function manageLikes(idBookDTO){
+function manageLikes(idBookDTO) {
     let baseUrl = window.location.protocol + "//" + window.location.host + "/BookLikes_war/likes?idBookDTO=" + idBookDTO;
 
     fetch(baseUrl, {
@@ -47,3 +47,4 @@ function manageLikes(idBookDTO){
             console.error('Error:', error);
         });
 }
+
