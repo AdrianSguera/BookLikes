@@ -41,10 +41,10 @@ public class NewBookServlet extends HttpServlet {
 
     private void saveImageInServer(Part filePart, String fileName) throws IOException {
         // Especifica la ubicación de almacenamiento en Tomcat
-        String tomcatUploadPath = "C:/Program Files/Apache Software Foundation/Tomcat 10.1/webapps/BookLikes_war/assets/images";
+        String tomcatUploadPath = System.getProperty("user.dir") + "/../webapps/BookLikes_war/assets/images";
 
         // Especifica la ubicación de almacenamiento en el repositorio local del proyecto
-        String localRepoPath = "C:/Users/adria/IdeaProjects/BookLikes/src/main/webapp/assets/images";
+        String localRepoPath = System.getProperty("user.home") + "/IdeaProjects/BookLikes/src/main/webapp/assets/images";
 
         // Lee el contenido del archivo
         InputStream fileContent = filePart.getInputStream();
