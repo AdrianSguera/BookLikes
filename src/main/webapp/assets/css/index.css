@@ -1,18 +1,81 @@
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
-background-color: #eadfd8;
+    background-color: #d7d7d7;
 }
 
-header{
-    margin: 0;
+.cabecera{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #9fbac5;
+
+}
+.titulo{
+    margin-top: 20px;
+    font-family: "Arvo", serif;
+    font-weight: bolder;
+    font-style: normal;
 }
 .card-deck {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    font-family: "Arvo", serif;
+    font-style: normal;
+    border: none;
+}
+.card-body{
+    background-color: #e2ebee;
+}
+.card-title{
+    font-family: "Arvo", serif;
+    font-weight: bold;
+    font-style: normal;
+    border: none;
+}
+.card {
+    width: 500px;
+    height: 850px;
+    margin-bottom: 50px;
+    border: none;
 }
 
-.card {
-    width: 30%; /* Ajusta el ancho de cada tarjeta según tu diseño */
-    margin-bottom: 20px; /* Espacio entre las tarjetas */
+.card-img-top {
+    --color: #1d6fc0;
+    --border: 10px;
+    --offset: 20px;
+    --gap: 5px;
+    --_c: var(--color) var(--border), #0000 0 calc(100% - var(--border)),var(--color) 0;
+    --_o: calc(3*var(--offset));
+    padding:
+            calc(var(--gap) + var(--border))
+            calc(var(--gap) + var(--border) + var(--offset))
+            calc(var(--gap) + var(--border) + var(--offset))
+            calc(var(--gap) + var(--border));
+    background:
+            linear-gradient(      var(--_c)) var(--_o) var(--_o),
+            linear-gradient(90deg,var(--_c)) var(--_o) var(--_o);
+    background-size: calc(100% - var(--_o)) calc(100% - var(--_o));
+    background-repeat: no-repeat;
+    filter: grayscale(.7);
+    transition: .5s;
+    cursor: pointer;
+}
+.card-img-top:hover {
+    background-position: 0px 0px;
+    background-size: calc(100% - var(--offset)) calc(100% - var(--offset));
+    filter: grayscale(0);
+}
+button{
+    background-color: #1d6fc0;
+    border: none;
+    width: 80px;
+}
+button:hover{
+    background-color: #596780;
+    color: white;
 }

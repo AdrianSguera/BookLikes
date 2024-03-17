@@ -12,11 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.ico">
 </head>
 <body>
 <header>
     <div class="container mt-5">
     <div class="cabecera">
+        <h2 class="titulo">BookLikes</h2>
         <a href="register">
             <button class="btnsesion">Register</button>
         </a>
@@ -24,7 +26,7 @@
             <button class="btnsesion">Log in</button>
         </a>
     </div>
-    <h2>BookLikes</h2>
+    </div>
 </header>
     <!-- Card Deck de Bootstrap para mostrar la lista de libros -->
     <div class="card-deck mt-4">
