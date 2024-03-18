@@ -78,4 +78,5 @@ button{
 button:hover{
     background-color: #596780;
     color: white;
+    border: darkblue;
 }
